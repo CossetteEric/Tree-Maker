@@ -1,4 +1,4 @@
-function Get-HashtableBuilder {
+function Get-TreeBuilder {
 <#
 .SYNOPSIS
 Creates a scriptblock that will build out the tree so you can safely assign
@@ -12,7 +12,7 @@ The path through the tree with each node separated by a dot (.)
 
 .EXAMPLE
 $System = @{}
-& (Get-HashtableBuilder "System" "Config.User.Name")
+& (Get-TreeBuilder "System" "Config.User.Name")
 $System.Config.User.Name = "John"
 #>
     Param(
@@ -33,6 +33,5 @@ $System.Config.User.Name = "John"
         $Line
     }}
     $BuildString = (@($basecase) + $Lines) -Join [System.Environment]::NewLine
-    Write-Host $BuildString
     return [scriptblock]::Create($BuildString)
 }

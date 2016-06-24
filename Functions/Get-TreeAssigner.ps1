@@ -1,4 +1,4 @@
-function Get-HashtableAssigner {
+function Get-TreeAssigner {
     Param(
         [string]$HashtableName,
         [string]$Path
